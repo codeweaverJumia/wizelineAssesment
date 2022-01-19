@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-from convert import *
+from Helper import *
 
 app = Flask(__name__)
 convert = CidrMaskConvert()
@@ -19,7 +19,7 @@ def url_health():
     return "OK"
 
 #Description:: Cidr to mask Endpoint
-# http://host:8000/cidr-to-mask?value=8
+# http://host:8000/cidr-to-mask?value=15
 @app.route("/cidr-to-mask")
 def url_cidr_to_mask():
     val = request.args.get('value')
@@ -31,7 +31,7 @@ def url_cidr_to_mask():
     return jsonify(res)
 
 #Description:: Mask-to-cidr Endpoint
-#http://host:8000/mask-to-cidr?value=255.0.0.0
+#http://host:8000/mask-to-cidr?value=255.254.0.0
 @app.route("/mask-to-cidr")
 def url_mask_to_cidr():
     val = request.args.get('value')
@@ -43,7 +43,7 @@ def url_mask_to_cidr():
     return jsonify(res)
 
 #Description:: IP validation Endpoint
-#http://host:8000/ip-validation?value=255.0.0.0
+#http://host:8000/ip-validation?value=255.254.0.0
 @app.route("/ip-validation")
 def url_ipv4_validation():
     val = request.args.get('value')
@@ -56,4 +56,4 @@ def url_ipv4_validation():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True, host='0.0.0.0', port=4000)

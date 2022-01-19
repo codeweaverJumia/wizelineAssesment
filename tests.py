@@ -1,5 +1,5 @@
 import unittest
-from convert import CidrMaskConvert, IpValidate
+from Helper import CidrMaskConvert, IpValidate
 
 class TestStringMethods(unittest.TestCase):
     def setUp(self):
